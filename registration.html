@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>NoCaSS 2014 | Registration</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/jquery.validate.js"></script> 
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"><img src="assets/img/logo_nav.png" height="40" alt="NoCaSS"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="programme.html">Programme</a></li>
+            <li><a href="venue.html">Venue</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="sponsors.html">Sponsorship</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	
+	
+	<!-- +++++ Registration Form Section +++++ -->
+	
+	<div class="container pt">
+		<div class="row mt">
+			<div class="col-lg-6 col-lg-offset-3 centered">
+				<h1>Register for NoCaSS 2014</h1>
+				<p><strong>Note:</strong> All registrants are required to submit an abstract.</p>
+        <p>Some abstracts will be selected for talks, while the remainder will be assigned to posters.</p>
+			</div>
+		</div>
+		<div class="row mt">	
+			<div class="col-lg-8 col-lg-offset-2">
+				<form role="form" id="form">
+				  <div class="form-group">
+          <label class="control-label" for="entry_1905842451">Full name</label>
+				  <input type="name" class="form-control" name="entry.1905842451" id="entry_1905842451" placeholder="Your Name" required />
+				  </div>
+				  <div class="form-group">
+          <label class="control-label" for="entry_1357792364">Email</label>
+			    <input type="email" class="form-control" name="entry.1357792364" id="entry_1357792364" placeholder="Enter email" required />
+				  </div>
+				  <div class="form-group">
+          <label class="control-label" for="entry_289435637">Poster/talk title</label>
+			    <input type="text" class="form-control" name="entry.289435637" id="entry_289435637" placeholder="Title" required />
+				  </div>
+          <div class="form-group">
+          <label class="control-label" for="entry_207732828">Abstract</label>
+				  <textarea class="form-control" name="entry.207732828" id="entry_207732828" rows="6" placeholder="Abstract" required></textarea>
+          </div>
+          <div class="form-group">
+          <label class="control-label" for="entry_242836795">Dietary requirements (if any)</label>
+          <input type="text" class="form-control" name="entry.242836795" id="entry_242836795" placeholder="Title">
+          </div>
+				  <button type="submit" class="btn btn-success">SUBMIT</button>
+				</form>    			
+			</div>
+		</div><!-- /row -->
+	</div><!-- /container -->
+	
+<!-- Form validation -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#form').validate({
+      rules: {
+        entry_1905842451: {
+          required: true,
+          minlength: 2
+        },
+        entry_1357792364: {
+          email: true,
+          required: true
+        },
+        entry_289435637: {
+          minlength: 2,
+          required: true
+        },
+        entry_207732828: {
+          required: true
+        }
+      },
+      highlight: function(element) {
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+      },
+      success: function(element) {
+          element
+          .addClass('valid')
+          .closest('.form-group').removeClass('has-error').addClass('has-success');
+      }
+    });
+  });
+</script>
+    <script src="assets/js/register.js"></script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

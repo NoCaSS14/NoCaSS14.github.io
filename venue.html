@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>NoCaSS 2014 | Venue</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- LeafletJS map -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"><img src="assets/img/logo_nav.png" height="40" alt="NoCaSS"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="programme.html">Programme</a></li>
+            <li><a href="venue.html">Venue</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="sponsors.html">Sponsorship</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+  <!-- +++++ Welcome Section +++++ -->
+  <div id="ww">
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 centered">
+           <div id="map"></div>
+        </div><!-- /col-lg-8 -->
+      </div><!-- /row -->
+      </div> <!-- /container -->
+  </div><!-- /ww -->
+  
+  
+  <!-- +++++ Information Section +++++ -->
+  
+  <div class="container pt">
+    <div class="row mt"> 
+      <div class="centered">
+      <h1>NoCaSS 2014 is being hosted by <a href="http://slcu.cam.ac.uk">the Sainsbury Lab</a> in Cambridge.</h1>
+      </div>
+      <div class="col-md-offset-2 col-md-4">
+        <h2>Location</h2>
+        <p>The Sainsbury lab is set in the 40-acre Cambridge Botanical Gardens in the heart of Cambridge and only 1km from the train station.<p>
+      </div>
+
+      <div class="col-md-4">
+        <h2>Transport</h2>
+        <p>For students travelling from Norwich, coaches will be arranged to and from the Sainsbury lab. Details will be sent to registered participants closer to the day.</p>
+        <p>Those wishing to make their own arrangements can find travel information on <a href="http://www.slcu.cam.ac.uk/about/contact">the Sainsbury Lab website</a>.</p>
+      </div>
+    </div><!-- /row -->
+  
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script>
+      var map = L.map('map').setView([52.19468, 0.12850], 16);
+      L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+        maxZoom: 18
+      }).addTo(map);
+      var marker = L.marker([52.19468, 0.12850]).addTo(map);
+      marker.bindPopup("<b>NoCaSS 2014 venue:</b><br>The Sainsbury Lab.").openPopup();
+    </script>
+  </body>
+</html>

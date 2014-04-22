@@ -1,0 +1,30 @@
+.centered {
+  text-align: center;
+}
+
+.navbar-brand {
+  padding: 5px;
+}
+
+.video-box {
+  left: auto;
+  right: auto;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.maincontent {
+  margin-bottom: 40px;
+}
+
+.footer {
+  margin-top: 40px;
+  background-color: #333333;
+  color: #888888;
+}
+
+#map { 
+  height: 420px;
+  margin: 40px;
+}
