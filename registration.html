@@ -56,36 +56,63 @@
 	
 	<div class="container pt">
 		<div class="row mt">
-			<div class="col-lg-6 col-lg-offset-3 centered">
-				<h1>Register for NoCaSS 2014</h1>
-				<p><strong>Note:</strong> All registrants are required to submit an abstract.</p>
-        <p>Some abstracts will be selected for talks, while the remainder will be assigned to posters.</p>
+			<div class="col-lg-6 col-lg-offset-3 ">
+				<center><h1>Register for NoCaSS 2014</h1></center>
+				<h2>Notes:</h2>
+        <ul>
+          <li>There is a registration fee of £10 to cover food and drink.</li>
+          <li>After registration you will be directed to the Cambridge University payments service to pay your registration fee.
+          Your registration will not be confirmed until you have paid.</li>
+          <li>All registrants are required to submit an abstract. Some abstracts will be selected for talks, while the remainder will be assigned to posters.</li>
 			</div>
 		</div>
 		<div class="row mt">	
 			<div class="col-lg-8 col-lg-offset-2">
-				<form role="form" id="form">
+        <form action="//forms.brace.io/nocass2014@gmail.com" role="form" id="form">
 				  <div class="form-group">
-          <label class="control-label" for="entry_1905842451">Full name</label>
-				  <input type="name" class="form-control" name="entry.1905842451" id="entry_1905842451" required />
+            <label class="control-label" for="full_name">Full name</label>
+  				  <input type="name" class="form-control" name="full_name" id="full_name" required />
 				  </div>
 				  <div class="form-group">
-          <label class="control-label" for="entry_1357792364">Email</label>
-			    <input type="email" class="form-control" name="entry.1357792364" id="entry_1357792364" required />
+            <label class="control-label" for="email">Email</label>
+  			    <input type="email" class="form-control" name="_replyto" id="email" required />
 				  </div>
 				  <div class="form-group">
-          <label class="control-label" for="entry_289435637">Poster/talk title</label>
-			    <input type="text" class="form-control" name="entry.289435637" id="entry_289435637" required />
+            <label class="control-label" for="talk_title">Poster/talk title</label>
+  			    <input type="text" class="form-control" name="talk_title" id="talk_title" required />
 				  </div>
           <div class="form-group">
-          <label class="control-label" for="entry_207732828">Abstract</label>
-				  <textarea class="form-control" name="entry.207732828" id="entry_207732828" rows="6" required></textarea>
+            <label class="control-label" for="abstract">Abstract</label>
+  				  <textarea class="form-control" name="abstract" id="abstract" rows="6" required></textarea>
           </div>
           <div class="form-group">
-          <label class="control-label" for="entry_242836795">Dietary requirements (if any)</label>
-          <input type="text" class="form-control" name="entry.242836795" id="entry_242836795">
+            <label class="control-label" for="workshops">
+              <p>Please suggest an idea for a hands-on workshop you would be
+                 interested in.
+              </p>
+              <p>
+                 <i>Examples: Phylogenetics; BLAST; genome annotation.</i>
+              </p>
+            </label>
+            <input type="text" class="form-control" name="workshops" id="workshops">
           </div>
-				  <button type="submit" class="btn btn-success">SUBMIT</button>
+          <div class="form-group">
+            <label class="control-label" for="dietary_requirements">
+              <p>Please suggest an idea for a discussion group you would be
+                 interested in.
+              </p>
+              <p>
+                 <i>Examples: "Is GM the answer?"; "Do we need experiments to do modelling?"</i>
+              </p>
+            </label>
+            <input type="text" class="form-control" name="dietary_requirements" id="dietary_requirements">
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="dietary_requirements">Dietary requirements (if any)</label>
+            <input type="text" class="form-control" name="dietary_requirements" id="dietary_requirements">
+          </div>
+  				  <button type="submit" class="btn btn-success">SUBMIT</button>
+            <input type="hidden" name="_next" value="thanks.html" />
 				</form>    			
 			</div>
 		</div><!-- /row -->
@@ -96,19 +123,19 @@
   $(document).ready(function() {
     $('#form').validate({
       rules: {
-        entry_1905842451: {
+        full_name: {
           required: true,
           minlength: 2
         },
-        entry_1357792364: {
+        email: {
           email: true,
           required: true
         },
-        entry_289435637: {
+        talk_title: {
           minlength: 2,
           required: true
         },
-        entry_207732828: {
+        abstract: {
           required: true
         }
       },
