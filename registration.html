@@ -20,6 +20,43 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/jquery.validate.js"></script> 
 
+    <script type="text/javascript">
+    function postContactToGoogle(){
+        var full_name = $('#full_name').val();
+        var email = $('#email').val();
+        var talk_title = $('#talk_title').val();
+        var abstract = $('#abstract').val();
+        var workshops = $('#workshops').val();
+        var discussion_groups = $('#discussion_groups').val();        
+        var dietary_requirements = $('#dietary_requirements').val();
+        
+        $.ajax({
+            url: "https://docs.google.com/forms/d/1CmXZERcW5xw_BvVLGupVl2JpqdRej0Wrs3jmSrOUuec/formResponse",
+            data: {"entry.2071474684" : full_name,
+                   "entry.680612757" : email,
+                   "entry.1796255108": talk_title,
+                   "entry.1737558027": abstract,
+                   "entry.1285957386": workshops,
+                   "entry.521515931": discussion_groups,
+                   "entry.390039556": dietary_requirements},
+            type: "POST",
+            dataType: "xml",
+            statusCode: {
+                0: function (){
+                    //success
+                    window.location.href = "thanks.html";
+                },
+                200: function (){
+                    //success
+                    window.location.href = "thanks.html";
+                }
+            }
+        });
+        
+        
+    }
+    </script>
+    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -66,7 +103,7 @@
 		</div>
 		<div class="row mt">	
 			<div class="col-lg-8 col-lg-offset-2">
-        <form action="https://formspree.io/m4rcj0n35@gmail.com" method="POST" role="form" id="form">
+        <form id="form" target="_self" onsubmit="" action="javascript: postContactToGoogle()">
 				  <div class="form-group">
             <label class="control-label" for="full_name">Full name</label>
   				  <input type="name" class="form-control" name="full_name" id="full_name" required />
@@ -95,7 +132,7 @@
             <input type="text" class="form-control" name="workshops" id="workshops">
           </div>
           <div class="form-group">
-            <label class="control-label" for="dietary_requirements">
+            <label class="control-label" for="discussion_groups">
               <p>Please suggest an idea for a discussion group you would be
                  interested in.
               </p>
@@ -103,14 +140,13 @@
                  <i>Examples: "Is GM the answer?"; "Do we need experiments to do modelling?"</i>
               </p>
             </label>
-            <input type="text" class="form-control" name="dietary_requirements" id="dietary_requirements">
+            <input type="text" class="form-control" name="discussion_groups" id="discussion_groups">
           </div>
           <div class="form-group">
             <label class="control-label" for="dietary_requirements">Dietary requirements (if any)</label>
             <input type="text" class="form-control" name="dietary_requirements" id="dietary_requirements">
           </div>
-  				  <button type="submit" class="btn btn-success">SUBMIT</button>
-            <input type="hidden" name="_next" value="http://nocass.org/thanks.html" />
+            <button type="submit" class="btn btn-success">SUBMIT</button>
             <br>
             <br>
 				</form>    			
