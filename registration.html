@@ -24,7 +24,7 @@
     function postContactToGoogle(){
         var full_name = $('#full_name').val();
         var email = $('#email').val();
-        var affiliations = []
+        var affiliations = [];
         $("input[name='affiliation[]']:checked").each(function ()
         {
             affiliations.push($(this).val());
@@ -39,17 +39,21 @@
         var year_of_study = $('input[name=year_of_study]:checked').val();      
         var year_of_study_other = $('#year_of_study_other_option').val();
         
-//         entry.1717424414:Third Year PhD
-// entry.1717424414.other_option_response:
+        var affiliations_google_no_space = [];
+        for (i=0; i<affiliations.length; i++)
+        {
+            affiliations_google_no_space.push(affiliations[i].split(' ').join(''));
+        }
+        var year_of_study_google_no_space = year_of_study.split(' ').join('');
         
         // Submit to Google Docs
         $.ajax({
             url: "https://docs.google.com/forms/d/1Nck0EEd9prE7x8iB9H_wld6l9fquqKw0F6poXvZddb4/formResponse",
             data: {"entry.2051905182" : full_name,
                    "entry.186324892" : email,
-                   "entry.1315127370" : affiliations,
+                   "entry.1315127370" : affiliations_google_no_space,
                    "entry.1315127370.other_option_response" : affiliation_other,
-                   "entry.1717424414" : year_of_study,
+                   "entry.1717424414" : year_of_study_google_no_space,
                    "entry.1717424414.other_option_response" : year_of_study_other,
                    "entry.1913588549": talk_title,
                    "entry.814893674": authors,
