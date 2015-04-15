@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+html{
+    overflow-y: scroll;
+}
+
 .navbar-brand {
   padding: 5px;
 }
