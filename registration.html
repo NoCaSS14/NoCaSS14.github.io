@@ -24,23 +24,33 @@
     function postContactToGoogle(){
         var full_name = $('#full_name').val();
         var email = $('#email').val();
+        var affiliations = []
+        $("input[name='affiliation[]']:checked").each(function ()
+        {
+            affiliations.push($(this).val());
+        });     
+        var affiliation_other = $('#affiliation_other_option').val();
         var talk_title = $('#talk_title').val();
+        var authors = $('#authors').val();
         var abstract = $('#abstract').val();
-        var workshops = $('#workshops').val();
-        var discussion_groups = $('#discussion_groups').val();        
         var dietary_requirements = $('#dietary_requirements').val();
-        
+        var transport = $('#transport').val();        
+
+        // Submit to Google Docs
         $.ajax({
-            url: "https://docs.google.com/forms/d/1CmXZERcW5xw_BvVLGupVl2JpqdRej0Wrs3jmSrOUuec/formResponse",
-            data: {"entry.2071474684" : full_name,
-                   "entry.680612757" : email,
-                   "entry.1796255108": talk_title,
-                   "entry.1737558027": abstract,
-                   "entry.1285957386": workshops,
-                   "entry.521515931": discussion_groups,
-                   "entry.390039556": dietary_requirements},
+            url: "https://docs.google.com/forms/d/1Nck0EEd9prE7x8iB9H_wld6l9fquqKw0F6poXvZddb4/formResponse",
+            data: {"entry.2051905182" : full_name,
+                   "entry.186324892" : email,
+                   "entry.1315127370" : affiliations,
+                   "entry.1315127370.other_option_response" : affiliation_other,
+                   "entry.1913588549": talk_title,
+                   "entry.814893674": authors,
+                   "entry.683339431": abstract,
+                   "entry.1149161054": dietary_requirements,
+                   "entry.900302086" : transport},
             type: "POST",
             dataType: "xml",
+            traditional: true, // Needed so that the affiliations vector is serialized correctly
             statusCode: {
                 0: function (){
                     //success
@@ -52,10 +62,62 @@
                 }
             }
         });
+        // Submit to formspree
+        $.ajax({
+            url: "https://formspree.io/JIC.NoCaSS@jic.ac.uk", 
+            method: "POST",
+            data: {"full_name" : full_name,
+                   "email" : email,
+                   "affiliations" : affiliations,
+                   "affiliation_other_response" : affiliation_other,
+                   "talk_title": talk_title,
+                   "authors" : authors,
+                   "abstract": abstract,
+                   "dietary_requirements": dietary_requirements,
+                   "transport" : transport},
+            dataType: "json"
+        });
         
+        for (i=0; i<affiliations; i++)
+        {
+            if (affiliations[i] == '__other_option__')
+            {
+                affiliations[i] = affiliation_other;
+            }
+        }
         
+        $.ajax({
+            type: "POST",
+            url: "https://mandrillapp.com/api/1.0/messages/send.json",
+            data: {
+                "key": "ff2HaiDjNKeav5HzUgBDBg",
+                "message": {
+                    "from_name": "NoCaSS 2015",
+                    "from_email": "JIC.NoCaSS@jic.ac.uk",
+                    "bcc_address": "JIC.NoCaSS@jic.ac.uk",
+                    "to": [{
+                            "email": email,
+                            "name": full_name,
+                            "type": "to"
+                        }],
+                    "autotext": "true",
+                    "subject": "NoCaSS 2015 Registration Confirmation",
+                    "html": "Thank you for registering for NoCaSS 2015<br><br>" +
+                            "If any of the details below are incorrect please reply to this e-mail with corrections.<br><br>" +
+                            "Name: " + full_name +
+                            "<br>e-mail: " + email +
+                            "<br>Affiliations: " + affiliations.join(', ') +
+                            "<br>Title: " + talk_title +
+                            "<br>Authors: " + authors +
+                            "<br>Abstract: " + abstract +
+                            "<br>Dietary Requirements: " + dietary_requirements +
+                            "<br>Interested in transport: " + transport +
+                            "<br><br>Many thanks,<br><br>The NoCaSS 2015 Team"                             
+                }
+            }
+        });
     }
-    </script>
+    </script>    
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -87,65 +149,101 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-	
-	
-	<!-- +++++ Registration Form Section +++++ -->
-	
-	<div class="container pt">
-		<div class="row mt">
-			<div class="col-lg-6 col-lg-offset-3 ">
-				<center><h1>Register for NoCaSS 2014</h1></center>
-				<h2>Notes:</h2>
+        
+        
+        <!-- +++++ Registration Form Section +++++ -->
+        
+    <div class="container pt">
+        <div class="row mt">
+            <div class="col-lg-6 col-lg-offset-3 ">
+            <center><h1>Register for NoCaSS 2014</h1></center>
+                                <h2>Notes:</h2>
         <ul>
-          <li>Registration is now <strong>free</strong>.</li>
-          <li>All registrants are required to submit an abstract. Some abstracts will be selected for talks, while the remainder will be assigned to posters.</li>
-			</div>
-		</div>
-		<div class="row mt">	
-			<div class="col-lg-8 col-lg-offset-2">
+        <li>Registration is now <strong>free</strong>.</li>
+        <li>All registrants are required to submit an abstract. Some abstracts will be selected for talks, while the remainder will be assigned to posters.</li>
+                        </div>
+                </div>
+                <div class="row mt">	
+                        <div class="col-lg-8 col-lg-offset-2">
         <form id="form" target="_self" onsubmit="" action="javascript: postContactToGoogle()">
-				  <div class="form-group">
-            <label class="control-label" for="full_name">Full name</label>
-  				  <input type="name" class="form-control" name="full_name" id="full_name" required />
-				  </div>
-				  <div class="form-group">
-            <label class="control-label" for="email">Email</label>
-  			    <input type="email" class="form-control" name="_replyto" id="email" required />
-				  </div>
-				  <div class="form-group">
+            <div class="form-group">
+                <label class="control-label" for="full_name">Full name</label>
+                <input type="name" class="form-control" name="full_name" id="full_name" required />
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="email">Email</label>
+                <input type="email" class="form-control" name="_replyto" id="email" required />
+            </div>
+            
+            <div class="form-group">
+            
+                <label class="control-label" for="affiliation">Affiliation</label>
+                <div class="checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" name='affiliation[]' id='affiliation1' value="Department of Plant Sciences - University of Cambridge">Department of Plant Sciences - University of Cambridge
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" name='affiliation[]' id='affiliation2' value="John Innes Centre">John Innes Centre
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" name='affiliation[]' id='affiliation3' value="The Sainsbury Laboratory - Norwich">The Sainsbury Laboratory - Norwich
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" name='affiliation[]' id='affiliation4' value="The Sainsbury Laboratory - University of Cambridge">The Sainsbury Laboratory - University of Cambridge
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" name="affiliation[]" id='affiliation5' value="__other_option__">Other: 
+                    </label>
+                    <input type="text" id="affiliation_other_option" name="affiliation_other_option" value="">
+                </div>
+                <div class="error" id="affiliation_error"></div>
+
+            
+            </div>
+            
+                                <div class="form-group">
             <label class="control-label" for="talk_title">Poster/talk title</label>
-  			    <input type="text" class="form-control" name="talk_title" id="talk_title" required />
-				  </div>
-          <div class="form-group">
+                            <input type="text" class="form-control" name="talk_title" id="talk_title" required />
+                                </div>
+                                
+        <div class="form-group">
+            <label class="control-label" for="authors">Authors</label>
+            <p>Please provide the complete list of authors of your poster/talk (including yourself)</p>
+            <input type="text" class="form-control" name="authors" id="authors">
+          </div>
+                                
+        <div class="form-group">
             <label class="control-label" for="abstract">Abstract</label>
-  				  <textarea class="form-control" name="abstract" id="abstract" rows="6" required></textarea>
-          </div>
-          <div class="form-group">
-            <label class="control-label" for="workshops">
-              <p>Please suggest an idea for a hands-on workshop you would be
-                 interested in.
-              </p>
-              <p>
-                 <i>Examples: Phylogenetics; BLAST; genome annotation.</i>
-              </p>
-            </label>
-            <input type="text" class="form-control" name="workshops" id="workshops">
-          </div>
-          <div class="form-group">
-            <label class="control-label" for="discussion_groups">
-              <p>Please suggest an idea for a discussion group you would be
-                 interested in.
-              </p>
-              <p>
-                 <i>Examples: "Is GM the answer?"; "Do we need experiments to do modelling?"</i>
-              </p>
-            </label>
-            <input type="text" class="form-control" name="discussion_groups" id="discussion_groups">
-          </div>
+                                <textarea class="form-control" name="abstract" id="abstract" rows="6" required></textarea>
+        </div>
+        
+
           <div class="form-group">
             <label class="control-label" for="dietary_requirements">Dietary requirements (if any)</label>
             <input type="text" class="form-control" name="dietary_requirements" id="dietary_requirements">
           </div>
+          
+          <div class="form-group">
+            <label class="control-label" for="transport">Are you interested in coach transport between Cambridge and Norwich?</label>
+            <p>Details to follow. This is to get an idea of numbers only and does not commit you to a place on the coach</p>
+            <div class="radio">
+                <label><input type="radio" name="transport" id="transport" value="Yes">Yes</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="transport" id="transport" value="No">No</label>
+            </div>
+            <div class="error" id="transport_error"></div>
+          </div>
+          
+          
             <button type="submit" class="btn btn-success">SUBMIT</button>
             <br>
             <br>
@@ -156,28 +254,83 @@
 	
 <!-- Form validation -->
 <script type="text/javascript">
+    $('#affiliation_other_option').on('input', function() {
+        if ($(this).val().length>0)
+        {
+            $('#affiliation5').prop( "checked", true );
+        
+        }
+    }).trigger('input');
+
+
   $(document).ready(function() {
     $('#form').validate({
       rules: {
         full_name: {
-          required: true,
-          minlength: 2
+          required: true
         },
         email: {
           email: true,
           required: true
         },
-        talk_title: {
-          minlength: 2,
+        'affiliation[]': {
+          minlength: 1,
           required: true
         },
+        talk_title: {
+          required: true
+        },
+        authors: {
+            required: true
+        },
         abstract: {
+          required: true,
+          maxlength: 3500
+        },
+        transport: {
           required: true
         }
       },
+      messages: {
+        full_name: {
+          required: "Please enter your name"
+        },
+        email: {
+          required: "Please enter a valid e-mail address"
+        },
+        'affiliation[]': {
+          minlength: "Please indicate at least 1 affiliation",
+          required: "Please indicate at least 1 affiliation"
+        },
+        talk_title: {
+          required: "Please enter a title for your poster / talk"
+        },
+        authors: {
+            required: "Please enter a list of authors"
+        },
+        abstract: {
+          required: "Please enter an abstract",
+          maxlength: "The entered abstract is greater than 3500 characters"
+        },
+        transport: {
+          required: "Please indicate whether you are interested in arranged transport"
+        }
+      },
+      
       highlight: function(element) {
           $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
       },
+        errorPlacement : function(error, element) {
+            if($(element).prop("name") === "affiliation[]") {
+                $("#affiliation_error").append(error);
+            }
+            else if($(element).prop("name") === "transport") {
+                $("#transport_error").append(error);
+            }
+            else {
+                error.insertAfter(element); // default error placement.
+            }
+        },
       success: function(element) {
           element
           .addClass('valid')

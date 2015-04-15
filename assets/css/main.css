@@ -37,3 +37,11 @@ table {
 .panel-sponsor {
   padding: 0;
 }
+
+label {
+    font-weight: bold;
+}
+
+.has-error .radio, .has-error .checkbox, .has-success .help-block, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline {
+color: #555555;
+}
