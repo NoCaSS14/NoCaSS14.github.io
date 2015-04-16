@@ -161,6 +161,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html">Home</a></li>
             <li><a href="programme.html">Programme</a></li>
             <li><a href="venue.html">Venue</a></li>
             <li><a href="registration.html">Registration</a></li>
@@ -175,14 +176,16 @@
         
     <div class="container">
         <div class="row mt">
-            <div class="col-lg-6 col-lg-offset-3 ">
-            <center><h1>Registration</h1></center>
-                                <h3>Notes:</h3>
-        <p>All registrants are required to submit an abstract. Some abstracts will be selected for talks, while the remainder will be assigned to posters.</p>
-                        </div>
-                </div>
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <center><h1>Registration</h1></center>
+                <center><h3 class="text-info">Registration will close on the 12<sup>th</sup> June 2015</h3></center>
+
+                <h3>Notes:</h3>
+                <p>All registrants are required to submit an abstract. Some abstracts will be selected for talks, while the remainder will be assigned to posters.</p>
+            </div>
+        </div>
                 <div class="row mt">	
-                        <div class="col-lg-8 col-lg-offset-2">
+                        <div class="col-sm-8 col-sm-offset-2">
         <form id="form" target="_self" onsubmit="" action="javascript: postContactToGoogle()">
             <div class="form-group">
                 <label class="control-label" for="full_name">Full name</label>
@@ -268,7 +271,8 @@
                                 
         <div class="form-group">
             <label class="control-label" for="abstract">Abstract</label>
-                                <textarea class="form-control" name="abstract" id="abstract" rows="6" required></textarea>
+            <p>Must be no longer than 3500 characters (including spaces)</p>
+            <textarea class="form-control" name="abstract" id="abstract" rows="6" required></textarea>
         </div>
         
 
