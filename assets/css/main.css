@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.img-sponsor {
+    display:block;
+    max-width:100%;
+}
+
 html{
     overflow-y: scroll;
 }
