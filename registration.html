@@ -49,6 +49,24 @@
         }
         var year_of_study_google_no_space = year_of_study.split(' ').join('');
         
+        // Submit to formspree
+        $.ajax({
+            url: "https://formspree.io/JIC.NoCaSS@jic.ac.uk", 
+            method: "POST",
+            data: {"full_name" : full_name,
+                   "email" : email,
+                   "affiliations" : affiliations,
+                   "affiliation_other_response" : affiliation_other,
+                   "entry.1717424414" : year_of_study,
+                   "entry.1717424414.other_option_response" : year_of_study_other,
+                   "talk_title": talk_title,
+                   "authors" : authors,
+                   "abstract": abstract,
+                   "dietary_requirements": dietary_requirements,
+                   "transport" : transport},
+            dataType: "json"
+        });
+
         // Submit to Google Docs
         $.ajax({
             url: "https://docs.google.com/forms/d/1Nck0EEd9prE7x8iB9H_wld6l9fquqKw0F6poXvZddb4/formResponse",
@@ -76,23 +94,6 @@
                     window.location.href = "thanks.html";
                 }
             }
-        });
-        // Submit to formspree
-        $.ajax({
-            url: "https://formspree.io/JIC.NoCaSS@jic.ac.uk", 
-            method: "POST",
-            data: {"full_name" : full_name,
-                   "email" : email,
-                   "affiliations" : affiliations,
-                   "affiliation_other_response" : affiliation_other,
-                   "entry.1717424414" : year_of_study,
-                   "entry.1717424414.other_option_response" : year_of_study_other,
-                   "talk_title": talk_title,
-                   "authors" : authors,
-                   "abstract": abstract,
-                   "dietary_requirements": dietary_requirements,
-                   "transport" : transport},
-            dataType: "json"
         });
         
         for (i=0; i<affiliations.length; i++)
