@@ -9,7 +9,7 @@ $(document).ready(function()
                 <span class="icon-bar"></span>\
                 <span class="icon-bar"></span>\
             </button>\
-            <a class="navbar-brand" href="index.html"><img class="img-responsive" style="max-height:100%" src="assets/img/Horizontal_header.svg" height="40" alt="NoCaSS"></a>\
+            <a class="navbar-brand" href="index.html"><img class="img-responsive" style="max-height:100%" src="assets/img/Horizontal_header.svg" height="40" width="auto" alt="NoCaSS"></a>\
             </div>\
             <div class="navbar-collapse collapse">\
             <ul class="nav navbar-nav navbar-right">\
