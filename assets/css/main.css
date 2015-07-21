@@ -15,8 +15,16 @@ html{
   padding: 5px;
 }
 
-table {
-  text-align: left;
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+
+.table > thead > tr > th {
+     text-align: center;
+}
+
+tbody > tr:nth-child(2n+1) > td {
+   background-color: #DDDDDD;
 }
 
 .video-box {
