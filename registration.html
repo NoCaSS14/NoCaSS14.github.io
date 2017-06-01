@@ -18,28 +18,395 @@
     <link href="assets/css/main.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/jquery.validate.js"></script> 
+    <script src="assets/js/jquery.validate.js"></script>
 
     <script src="https://platform.twitter.com/widgets.js"></script>
-    
-    
+
+<!--      EmailJS -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init("user_Gh1L86qGbyhp885vYmsrA");
+    })();
+    </script>
+
+
+    <script type="text/javascript">
+    function postContactToGoogle(){
+        var full_name = $('#full_name').val();
+        var email = $('#email').val();
+        var affiliations = [];
+        $("input[name='affiliation[]']:checked").each(function ()
+        {
+            affiliations.push($(this).val());
+        });
+        var affiliation_other = $('#affiliation_other_option').val();
+        var talk_title = $('#talk_title').val();
+        var authors = $('#authors').val();
+        var abstract = $('#abstract').val();
+        var dietary_requirements = $('#dietary_requirements').val();
+        var transport = $('#transport:checked').val();
+
+        var year_of_study = $('input[name=year_of_study]:checked').val();
+        var year_of_study_other = $('#year_of_study_other_option').val();
+
+        var affiliations_google_no_space = [];
+        for (i=0; i<affiliations.length; i++)
+        {
+            affiliations_google_no_space.push(affiliations[i].split(' ').join(''));
+        }
+        var year_of_study_google_no_space = year_of_study.split(' ').join('');
+
+        for (i=0; i<affiliations.length; i++)
+        {
+            if (affiliations[i] == '__other_option__')
+            {
+                affiliations[i] = affiliation_other;
+            }
+        }
+
+        if (year_of_study == '__other_option__')
+        {
+            year_of_study = year_of_study_other
+        }
+
+        // Submit to emailjs
+        function send_emailjs(callback) {
+            emailjs.send('gmail', 'nocass_confirmation', {
+                'to_mail': email,
+                'to_name': full_name,
+                'affiliation': affiliations.join(', '),
+                'year': year_of_study,
+                'talk_title': talk_title,
+                'authors': authors,
+                'abstract': abstract,
+                'diet': dietary_requirements,
+                'transport': transport
+            }).then(
+                function(response) {
+                    callback();
+                },
+                function(error) {
+                    console.log('Something went wrong with EmailJS!', error);
+                }
+                );;
+        }
+
+        // Submit to formspree
+        function send_formspree(callback) {
+            $.ajax({
+                url: "https://formspree.io/infonocass@jic.ac.uk",
+                method: "POST",
+                data: {"full_name" : full_name,
+                    "email" : email,
+                    "affiliations" : affiliations,
+                    "affiliation_other_response" : affiliation_other,
+                    "entry.1717424414" : year_of_study,
+                    "entry.1717424414.other_option_response" : year_of_study_other,
+                    "talk_title": talk_title,
+                    "authors" : authors,
+                    "abstract": abstract,
+                    "dietary_requirements": dietary_requirements,
+                    "transport" : transport},
+                dataType: "json",
+                async: false
+            });
+            callback();
+        }
+
+        // Submit to Google Docs
+        function send_google_doc() {
+            $.ajax({
+                url: "https://docs.google.com/forms/d/1QrTqQ1F-t2rf5H1MKa5YUUWIIhlNZcuzlhGesg-EhuA/formResponse",
+                data: {"entry.2051905182" : full_name,
+                    "entry.186324892" : email,
+                    "entry.1315127370" : affiliations_google_no_space,
+                    "entry.1315127370.other_option_response" : affiliation_other,
+                    "entry.1717424414" : year_of_study_google_no_space,
+                    "entry.1717424414.other_option_response" : year_of_study_other,
+                    "entry.1913588549": talk_title,
+                    "entry.814893674": authors,
+                    "entry.683339431": abstract,
+                    "entry.1149161054": dietary_requirements,
+                    "entry.900302086" : transport},
+                type: "POST",
+                dataType: "xml",
+                traditional: true, // Needed so that the affiliations vector is serialized correctly
+                statusCode: {
+                    0: function (){
+                        //success
+                        window.location.href = "thanks.html";
+                    },
+                    200: function (){
+                        //success
+                        window.location.href = "thanks.html";
+                    }
+                },
+                async: false
+            });
+        }
+
+        send_emailjs(function() {
+            send_formspree(function() {
+                send_google_doc();
+            });
+        });
+    }
+    </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
   </head>
 
   <body>
 
     <div id="navbar_replacement"></div>
     <script src="assets/js/navbar.js"></script>
-        
-    <div class="container pt">
+
+
+        <!-- +++++ Registration Form Section +++++ -->
+
+    <div class="container">
         <div class="row mt">
-            <div class="col-lg-6 col-lg-offset-3 centered">
-                <h1>Registration</h1>
-                <center><h3 class="text-danger">Registration for 2017 will open soon</h3></center>
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <center><h1>Registration</h1></center>
+                <center><h3 class="text-info">Registration will close on the 20<sup>th</sup> July 2015</h3></center>
+
+                <h3>Notes:</h3>
+                <p>All registrants are required to submit an abstract. Some abstracts will be selected for talks, while the remainder will be assigned to posters.</p>
+                <p>Abstracts submitted after 22/06/2015 will not be considered for talks.</p>
             </div>
-        </div><!-- /row -->
-    </div><!-- /container -->
-        
-        
+        </div>
+                <div class="row mt">
+                        <div class="col-sm-8 col-sm-offset-2">
+        <form id="form" target="_self" onsubmit="" action="javascript: postContactToGoogle()">
+            <div class="form-group">
+                <label class="control-label" for="full_name">Full name</label>
+                <input type="name" class="form-control" name="full_name" id="full_name" required />
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="email">Email</label>
+                <input type="email" class="form-control" name="_replyto" id="email" required />
+            </div>
+
+            <div class="form-group">
+
+                <label class="control-label" for="affiliation">Affiliation</label>
+                <div class="checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" name='affiliation[]' id='affiliation1' value="Department of Plant Sciences - University of Cambridge">Department of Plant Sciences - University of Cambridge
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" name='affiliation[]' id='affiliation2' value="John Innes Centre">John Innes Centre
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" name='affiliation[]' id='affiliation3' value="The Sainsbury Laboratory - Norwich">The Sainsbury Laboratory - Norwich
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" name='affiliation[]' id='affiliation4' value="The Sainsbury Laboratory - University of Cambridge">The Sainsbury Laboratory - University of Cambridge
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" name='affiliation[]' id='affiliation4' value="Earlham Institute">Earlham Institute
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" name="affiliation[]" id='affiliation5' value="__other_option__">Other:
+                    </label>
+                    <input type="text" id="affiliation_other_option" name="affiliation_other_option" value="">
+                </div>
+                <div class="error" id="affiliation_error"></div>
+
+
+            </div>
+
+
+
+          <div class="form-group">
+                <label class="control-label" for="year_of_study">Year of study</label>
+            <div class="radio">
+                <label><input type="radio" name="year_of_study" id="year_of_study" value="First Year PhD">First Year PhD</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="year_of_study" id="year_of_study" value="Second Year PhD">Second Year PhD</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="year_of_study" id="year_of_study" value="Third Year PhD">Third Year PhD</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="year_of_study" id="year_of_study" value="Fourth Year PhD">Fourth Year PhD</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="year_of_study" id="year_of_study" value="Masters Student">Masters Student</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="year_of_study" id="year_of_study_other" value="__other_option__">Other: </label>
+                <input type="text" id="year_of_study_other_option" name="year_of_study_other_option" value="">
+            </div>
+            <div class="error" id="year_of_study_error"></div>
+          </div>
+
+
+
+                                <div class="form-group">
+            <label class="control-label" for="talk_title">Poster/talk title</label>
+                            <input type="text" class="form-control" name="talk_title" id="talk_title" required />
+                                </div>
+
+        <div class="form-group">
+            <label class="control-label" for="authors">Authors</label>
+            <p>Please provide the complete list of authors of your poster/talk (including yourself)</p>
+            <input type="text" class="form-control" name="authors" id="authors">
+          </div>
+
+        <div class="form-group">
+            <label class="control-label" for="abstract">Abstract</label>
+            <p>Must be no longer than 3500 characters (including spaces)</p>
+            <textarea class="form-control" name="abstract" id="abstract" rows="6" required></textarea>
+        </div>
+
+
+          <div class="form-group">
+            <label class="control-label" for="dietary_requirements">Dietary requirements (if any)</label>
+            <input type="text" class="form-control" name="dietary_requirements" id="dietary_requirements">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="transport">Are you interested in coach transport between Cambridge and Norwich?</label>
+            <p>Details to follow. This is to get an idea of numbers only and does not commit you to a place on the coach</p>
+            <div class="radio">
+                <label><input type="radio" name="transport" id="transport" value="Yes">Yes</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="transport" id="transport" value="No">No</label>
+            </div>
+            <div class="error" id="transport_error"></div>
+          </div>
+
+
+            <center><button type="submit" class="btn btn-success">SUBMIT</button></center>
+            <br>
+            <br>
+				</form>
+			</div>
+		</div><!-- /row -->
+	</div><!-- /container -->
+
+<!-- Form validation -->
+<script type="text/javascript">
+    $('#affiliation_other_option').on('input', function() {
+        if ($(this).val().length>0)
+        {
+            $('#affiliation5').prop( "checked", true );
+
+        }
+    }).trigger('input');
+
+    $('#year_of_study_other_option').on('input', function() {
+        if ($(this).val().length>0)
+        {
+            $('#year_of_study_other').prop( "checked", true );
+
+        }
+    }).trigger('input');
+
+
+  $(document).ready(function() {
+    $('#form').validate({
+      rules: {
+        full_name: {
+          required: true
+        },
+        email: {
+          email: true,
+          required: true
+        },
+        'affiliation[]': {
+          minlength: 1,
+          required: true
+        },
+        year_of_study: {
+            required : true
+        },
+        talk_title: {
+          required: true
+        },
+        authors: {
+            required: true
+        },
+        abstract: {
+          required: true,
+          maxlength: 3500
+        },
+        transport: {
+          required: true
+        }
+      },
+      messages: {
+        full_name: {
+          required: "Please enter your name"
+        },
+        email: {
+          required: "Please enter a valid e-mail address"
+        },
+        'affiliation[]': {
+          minlength: "Please indicate at least 1 affiliation",
+          required: "Please indicate at least 1 affiliation"
+        },
+        year_of_study: {
+            required : "Please enter your year of study"
+        },
+        talk_title: {
+          required: "Please enter a title for your poster / talk"
+        },
+        authors: {
+            required: "Please enter a list of authors"
+        },
+        abstract: {
+          required: "Please enter an abstract",
+          maxlength: "The entered abstract is greater than 3500 characters"
+        },
+        transport: {
+          required: "Please indicate whether you are interested in arranged transport"
+        }
+      },
+
+      highlight: function(element) {
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+      },
+        errorPlacement : function(error, element) {
+            if($(element).prop("name") === "affiliation[]") {
+                $("#affiliation_error").append(error);
+            }
+            else if($(element).prop("name") === "transport") {
+                $("#transport_error").append(error);
+            }
+            else if($(element).prop("name") === "year_of_study") {
+                $("#year_of_study_error").append(error);
+            }
+            else {
+                error.insertAfter(element); // default error placement.
+            }
+        },
+      success: function(element) {
+          element
+          .addClass('valid')
+          .closest('.form-group').removeClass('has-error').addClass('has-success');
+      }
+    });
+  });
+</script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
