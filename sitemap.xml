@@ -1,0 +1,30 @@
+<urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+	<!--
+	 created with Free Online Sitemap Generator www.xml-sitemaps.com 
+	-->
+	<url>
+		<loc>http://nocass.org/</loc>
+		<lastmod>2019-09-25T15:12:24+00:00</lastmod>
+		<priority>1.00</priority>
+	</url>
+	<url>
+		<loc>http://nocass.org/venue.html</loc>
+		<lastmod>2019-09-25T15:12:24+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>http://nocass.org/about.html</loc>
+		<lastmod>2019-09-25T15:12:24+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>http://nocass.org/programme.html</loc>
+		<lastmod>2019-09-25T15:12:24+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>http://nocass.org/sponsors.html</loc>
+		<lastmod>2019-09-25T15:12:24+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+</urlset>
