@@ -59,7 +59,7 @@
 		
 		<div class="row mt">
                         <div class="col-sm-8 col-sm-offset-2">
-        <form id="foo">
+        <form id="foo"  target="_self" onsubmit="" action="javascript: postContactToGoogle()">
             <div class="form-group">
                 <label class="control-label" for="full_name">Full name</label>
                 <input type="name" class="form-control" name="full_name" id="full_name" required />
@@ -251,7 +251,7 @@ jQuery( document ).ready(function( $ ) {
 	// variable to hold request
 	var request;
 	// bind to the submit event of our form
-	$("#foo").submit(function(event){
+	function postContactToGoogle(){
 		// abort any pending request
 		if (request) {
 			request.abort();
