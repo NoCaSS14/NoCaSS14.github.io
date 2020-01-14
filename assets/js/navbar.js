@@ -9,7 +9,7 @@ $(document).ready(function()
                 <span class="icon-bar"></span>\
                 <span class="icon-bar"></span>\
             </button>\
-            <a class="navbar-brand" href="index.html"><img class="img-responsive" style="width:280px;max-width:100%" src="assets/img/Horizontal_header_generic.svg" alt="NoCaSS 2020"></a>\
+            <a class="navbar-brand" href="index.html"><img class="img-responsive" style="width:280px;max-width:100%" src="assets/img/NoCaSS2020_transparent.png" alt="NoCaSS 2020"></a>\
             </div>\
             <div class="navbar-collapse collapse">\
             <ul class="nav navbar-nav navbar-right">\
@@ -18,7 +18,7 @@ $(document).ready(function()
                 <li><a href="about.html">About</a></li>\
                 <li><a href="programme.html">Programme</a></li>\
                 <li><a href="venue.html">Venue</a></li>\
-                <li><a href="#">Registration</a></li>\
+                <li><a href="registration2.html">Registration</a></li>\
                 <li><a href="sponsors.html">Sponsorship</a></li>\
             </ul>\
             </div><!--/.nav-collapse -->\
