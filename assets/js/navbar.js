@@ -11,7 +11,6 @@ $(document).ready(function()
             </button>\
             <a class="navbar-brand" href="index.html"><img class="img-responsive" style="max-width:100%;max-height:100%" src="assets/img/NoCaSS2020_transparent.png" alt="NoCaSS 2020"></a>\
             </div>\
-            <div class="navbar-collapse collapse">\
             <ul class="nav navbar-nav navbar-right">\
                 <li><a href="https://twitter.com/intent/follow?screen_name=nocass_official">Follow @nocass_official</a></li>\
                 <li><a href="index.html">Home</a></li>\
@@ -21,7 +20,6 @@ $(document).ready(function()
                 <li><a href="venue.html">Venue</a></li>\
                 <li><a href="sponsors.html">Sponsorship</a></li>\
             </ul>\
-            </div>
         </div>\
         </div>\
     ');
