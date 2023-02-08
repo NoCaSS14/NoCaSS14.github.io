@@ -21,7 +21,7 @@ $(document).ready(function()
                 <li><a href="venue.html">Venue</a></li>\
                 <li><a href="sponsors.html">Sponsorship</a></li>\
             </ul>\
-            </div><!--/.nav-collapse -->\
+            </div>
         </div>\
         </div>\
     ');
