@@ -49,33 +49,16 @@
   
   <!-- +++++ Information Section +++++ -->
   
-  <div class="container pt">
+  <div class="container">
     <div class="row mt"> 
       <div class="centered">
-      <h1>NoCaSS 2021 is being virtually hosted by students of the <a href="https://www.jic.ac.uk/">John Innes Centre</a> in Norwich</h1>
+      <h1>NoCaSS 2023 will be held at the Sainsbury Laboratory in Cambridge, UK.</h1>
       </div>
      
-      <!-- 
-      <div class="col-md-offset-2 col-md-4">
-        <h2>Location</h2>
-        <p align="justify">The John Innes Centre is located to the east of Norwich,
-           next to the Norfolk &amp; Norwich University Hospital.</p>
-        <p>John Innes Centre&nbsp;<br>Norwich Research Park&nbsp;<br>Norwich&nbsp;<br>NR4 7UH&nbsp;<br>UK</p>
-      </div>
-
-      <div class="col-md-4">
-        <h2>Transport</h2>
-        <p  align="justify">Transport links from Cambridge to Norwich are good, with frequent trains between the two cities.
-           Taxis from the train station to the John Innes Centre should take approximately 20 mins and cost
-           £6.</p>
-           
-        <p  align="justify">For those driving, the A11 goes almost directly from Cambridge to Norwich, with the journey being
-           approximately 1 hour 30 mins.</p>
-    -->           
-
-
-      </div>
-    </div><!-- /row -->
+          </div>
+    </div>
+  
+   <!-- /row -->
   
 
     <!-- Bootstrap core JavaScript
@@ -85,11 +68,11 @@
     <script>
       var map = L.map('map').setView([52.622266, 1.221378], 8);
       L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/export#map=19/52.19415/0.12813">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
         maxZoom: 18
       }).addTo(map);
       var marker = L.marker([52.622266, 1.221378]).addTo(map);
-      marker.bindPopup("<b>NoCaSS 2020 venue:</b><br>The John Innes Centre").openPopup();
+      marker.bindPopup("<b>NoCaSS 2023 venue:</b><br>Sainsbury Laboratory").openPopup();
     </script>
   </body>
 </html>
