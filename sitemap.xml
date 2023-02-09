@@ -28,12 +28,7 @@
 		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>http://nocass.org/sponsors.html</loc>
-		<lastmod>2019-09-25T15:12:24+00:00</lastmod>
-		<priority>0.80</priority>
-	</url>
-	<url>
-		<loc>http://nocass.org/registration2.html</loc>
+		<loc>http://nocass.org/registration.html</loc>
 		<lastmod>2020-01-20T15:12:24+00:00</lastmod>
 		<priority>0.85</priority>
 	</url>
