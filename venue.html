@@ -66,12 +66,12 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script>
-      var map = L.map('map').setView([52.622266, 1.221378], 8);
+      var map = L.map('map').setView([52.19415, 0.12813], 8);
       L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/export#map=19/52.19415/0.12813">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
         maxZoom: 18
       }).addTo(map);
-      var marker = L.marker([52.622266, 1.221378]).addTo(map);
+      var marker = L.marker([52.19415, 0.12813]).addTo(map);
       marker.bindPopup("<b>NoCaSS 2023 venue:</b><br>Sainsbury Laboratory").openPopup();
     </script>
   </body>
