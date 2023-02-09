@@ -19,7 +19,6 @@ $(document).ready(function()
                 <li><a href="registration.html">Registration</a></li>\
                 <li><a href="programme.html">Programme</a></li>\
                 <li><a href="venue.html">Venue</a></li>\
-                <li><a href="sponsors.html">Sponsorship</a></li>\
             </ul>\
             </div><!--/.nav-collapse -->\
         </div>\
