@@ -19,6 +19,7 @@ $(document).ready(function()
                 <li><a href="registration.html">Registration</a></li>\
                 <li><a href="programme.html">Programme</a></li>\
                 <li><a href="venue.html">Venue</a></li>\
+                <li><a href="acknowledgement.html">Acknowledgement</a></li>\
             </ul>\
             </div><!--/.nav-collapse -->\
         </div>\
