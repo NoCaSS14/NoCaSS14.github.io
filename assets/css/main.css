@@ -117,13 +117,6 @@ color: #555555;
         height: 100%;
 }
 
-/* If minimum screen width is 721, switch to side by side. Replace 721 with whatever screen size you want to swap between horizontal and stacked view */
-@media (min-width:480px){
-      .flex-outer {
-    flex-direction: row;
-    }
-}
-
 .flex-outer {
   display: flex;
   flex-direction:column; /* Initially, mobile first */
@@ -134,3 +127,11 @@ color: #555555;
   padding: 1em;
   flex-wrap: wrap;
 }
+
+/* If minimum screen width is 480, switch to side by side. Replace 480 with whatever screen size you want to swap between horizontal and stacked view */
+@media (min-width:480px){
+      .flex-outer {
+    flex-direction: row;
+    }
+}
+
