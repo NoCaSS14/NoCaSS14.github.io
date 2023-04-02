@@ -118,7 +118,7 @@ color: #555555;
 }
 
 /* If minimum screen width is 721, switch to side by side. Replace 721 with whatever screen size you want to swap between horizontal and stacked view */
-@media (min-width:721px){
+@media (min-width:480px){
       .flex-outer {
     flex-direction: row;
     }
