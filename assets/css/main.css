@@ -119,7 +119,7 @@ color: #555555;
 
 .flex-outer {
   display: flex;
-  flex-direction:column; /* Initially, mobile first */
+  flex-direction:row;
 }
 
 .flex-inner {
@@ -128,10 +128,10 @@ color: #555555;
   flex-wrap: wrap;
 }
 
-/* If minimum screen width is 480, switch to side by side. Replace 480 with whatever screen size you want to swap between horizontal and stacked view */
-@media (min-width:480px){
+/* If maximum screen width is 719, switch to side by side. Replace 719 with whatever screen size you want to swap between horizontal and stacked view */
+@media (max-width: 719px){
       .flex-outer {
-    flex-direction: row;
+    flex-direction: column;
     }
 }
 
