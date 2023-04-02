@@ -117,26 +117,12 @@ color: #555555;
         height: 100%;
 }
 
-.flex-outer {
-  display: flex;
-  flex-direction:column; /* Initially, mobile first */
+#flexContainer {
+  display: block;
 }
 
-/* If minimum screen width is 721, switch to side by side. Replace 721 with whatever screen size you want to swap between horizontal and stacked view */
-@media (min-width:721px){
-      .flex-outer {
-    flex-direction: row;
-    }
-}
-
-.flex-outer {
-  display: flex;
-  flex-direction: column;
-}
-
-.flex-inner {
-  flex: 1;
-  padding: 1em;
-  flex-wrap: wrap;
-  border: solid;
+@media only screen and (min-width: 1024px) {
+  #flexContainer {
+    display: flex;
+  }
 }
