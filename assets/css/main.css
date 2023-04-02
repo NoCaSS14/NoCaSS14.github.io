@@ -117,12 +117,14 @@ color: #555555;
         height: 100%;
 }
 
-#flexContainer {
-  display: block;
+.flexContainer {
+  display: flex;
+  flex-direction: column;
 }
 
-@media only screen and (min-width: 1024px) {
-  #flexContainer {
+@media (min-width: 1024px) {
+  .flexContainer {
     display: flex;
+    flex-direction: row;
   }
 }
