@@ -128,5 +128,6 @@ color: #555555;
 .flex-inner {
   flex: 1;
   padding: 1em;
+  flex-wrap: wrap;
   border: solid;
 }
