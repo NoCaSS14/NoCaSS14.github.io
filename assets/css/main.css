@@ -100,6 +100,9 @@ color: #555555;
     .collapsing {
         overflow: hidden!important;
     }
+    .flex-outer {
+    flex-direction: row;
+    }
 }
 
 /*https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php*/
@@ -117,10 +120,13 @@ color: #555555;
         height: 100%;
 }
 
-.flex-stack {
+.flex-outer {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
+}
+
+.flex-inner {
+  flex: 1;
+  padding: 1em;
+  border: solid;
 }
