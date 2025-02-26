@@ -52,7 +52,7 @@
   <div class="container">
     <div class="row mt"> 
       <div class="centered">
-      <h1>NoCaSS 2024 will be held at the JIC Conference Centre, Norwich, UK.</h1>
+      <h1>NoCaSS 2025 will be held at the Sainsbury Laboratory , UK.</h1>
       </div>
      
           </div>
@@ -65,14 +65,15 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/bootstrap.min.js"></script>
-    <script>
-      var map = L.map('map').setView([52.19415, 0.12813], 8);
-      L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
-        maxZoom: 18
-      }).addTo(map);
-      var marker = L.marker([52.62219, 1.22103]).addTo(map);
-      marker.bindPopup("<b>NoCaSS 2024 venue:</b><br>JIC Conference Centre").openPopup();
-    </script>
+   <script>
+  var map = L.map('map').setView([52.2053, 0.1218], 13); // Centered on Cambridge
+  L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
+    maxZoom: 18
+  }).addTo(map);
+  
+  var marker = L.marker([52.2001, 0.1143]).addTo(map); // Sainsbury Laboratory location
+  marker.bindPopup("<b>Sainsbury Laboratory, Cambridge:</b><br>University of Cambridge").openPopup();
+</script>
   </body>
 </html>
