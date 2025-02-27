@@ -52,7 +52,7 @@
   <div class="container">
     <div class="row mt"> 
       <div class="centered">
-      <h1>NoCaSS 2025 will be held at the Sainsbury Laboratory , UK.</h1>
+      <h1>NoCaSS 2025 will be held at the Sainsbury Laboratory , UK. Norwich-based attendees accommodation will be provided at Christ's College.</h1>
       </div>
      
           </div>
@@ -66,14 +66,16 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/bootstrap.min.js"></script>
    <script>
-  var map = L.map('map').setView([52.2053, 0.1218], 13); // Centered on Cambridge
+ var map = L.map('map').setView([52.1940, 0.1319], 12); // More zoomed out
   L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
     maxZoom: 18
   }).addTo(map);
   
-  var marker = L.marker([52.2001, 0.1143]).addTo(map); // Sainsbury Laboratory location
-  marker.bindPopup("<b>Sainsbury Laboratory, Cambridge:</b><br>University of Cambridge").openPopup();
+  var marker = L.marker([52.1946, 0.1262]).addTo(map); // Sainsbury Laboratory location
+  marker.bindPopup("<b>Sainsbury Laboratory, Cambridge:</b><br>Next to the University Botanic Garden").openPopup();
+ var marker2 = L.marker([52.2060, 0.1218]).addTo(map);
+  marker2.bindPopup("<b>Christ's College, Cambridge:</b><br>Historic college founded in 1505").openPopup();
 </script>
   </body>
 </html>
