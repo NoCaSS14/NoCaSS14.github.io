@@ -13,7 +13,7 @@ $(document).ready(function()
             </div>\
             <div class="navbar-collapse collapse">\
             <ul class="nav navbar-nav navbar-right">\
-                <li><a href="https://twitter.com/intent/follow?screen_name=nocass_official"> @nocass_official</a></li>\
+                <li><a href="https://bsky.app/profile/nocass25.bsky.social" target="_blank">follow us on bluesky!</a></li>
                 <li><a href="index.html">Home</a></li>\
                 <li><a href="about.html">About</a></li>\
                 <li><a href="team.html">Team</a></li>\
