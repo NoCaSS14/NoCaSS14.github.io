@@ -15,7 +15,7 @@ $(document).ready(function()
             <ul class="nav navbar-nav navbar-right">\
                 <li><a href="https://bsky.app/profile/nocass25.bsky.social" target="_blank">\
 <img src="assets/img/bluesky.svg" alt="Bluesky logo" style="height:16px; vertical-align:middle; margin-right:5px;">\
-@nocass25.bsky.social</a></li>
+@nocass25.bsky.social</a></li>\
                 <li><a href="index.html">Home</a></li>\
                 <li><a href="about.html">About</a></li>\
                 <li><a href="team.html">Team</a></li>\
