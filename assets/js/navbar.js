@@ -9,7 +9,7 @@ $(document).ready(function()
                 <span class="icon-bar"></span>\
                 <span class="icon-bar"></span>\
             </button>\
-            <a class="navbar-brand" href="index.html"><img class="img-responsive" style="max-width:100%;max-height:100%" src="assets/img/NoCass25logoplain.png" alt="NoCaSS 2025"></a>\
+            <a class="navbar-brand" href="index.html"><img class="img-responsive" style="max-width:100%;max-height:100%" src="assets/img/logo2026_flat_JPG.jpeg" alt="NoCaSS 2026"></a>\
             </div>\
             <div class="navbar-collapse collapse">\
             <ul class="nav navbar-nav navbar-right">\
@@ -26,4 +26,5 @@ $(document).ready(function()
         </div>\
         </div>\
     ');
+    $('h1, h2, h3').addClass('fade-in');
 })
