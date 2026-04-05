@@ -135,3 +135,26 @@ color: #555555;
     }
 }
 
+h1, h2, h3 {
+    transform: translateY(-30px);
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+h1 {
+    transition-delay: 0s;
+}
+
+h2 {
+    transition-delay: 0.2s;
+}
+
+h3 {
+    transition-delay: 0.4s;
+}
+
+.fade-in {
+    transform: translateY(0);
+    opacity: 1;
+}
+
